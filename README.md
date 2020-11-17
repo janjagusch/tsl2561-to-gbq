@@ -47,7 +47,7 @@ Create a `.env` file (`cp .env.example .env`) and fill in the following informat
 
 ## Running the Application
 
-From your virutal environment, execute:
+From your virtual environment, execute:
 
 ```sh
 python main.py
