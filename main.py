@@ -54,4 +54,5 @@ if __name__ == "__main__":
     client, table = _gbq_setup()
     sensor = _sensor_setup()
     measurement = _measurement(sensor)
+    print(measurement)
     _gbq_insert(measurement, client, table)
