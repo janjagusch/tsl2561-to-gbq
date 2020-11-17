@@ -50,5 +50,13 @@ Create a `.env` file (`cp .env.example .env`) and fill in the following informat
 From your virtual environment, execute:
 
 ```sh
-python main.py
+python3 main.py
+```
+
+### Running as Crontab
+
+A simple crontab that runs every 5 minutes could look somewhat like this:
+
+```sh
+*/5 * * * * /usr/bin/env bash -c 'cd $HOME/path-to-your-application && source .venv/bin/activate && python3 main.py > .log 2>&1' > /dev/null 2>&1
 ```
