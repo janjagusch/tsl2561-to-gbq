@@ -2,12 +2,12 @@
 Reads luminosity from a TSL2561 sensor and stores the results in BigQuery.
 """
 
+import board
+import busio
 import os
 from datetime import datetime
 
 import adafruit_tsl2561
-import board
-import busio
 from dotenv import load_dotenv
 from google.cloud import bigquery
 
