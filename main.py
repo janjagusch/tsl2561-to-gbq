@@ -2,14 +2,15 @@
 Reads luminosity from a TSL2561 sensor and stores the results in BigQuery.
 """
 
-from datetime import datetime
-import board
-import busio
 import os
+from datetime import datetime
 
 import adafruit_tsl2561
-from google.cloud import bigquery
+import board
+import busio
 from dotenv import load_dotenv
+from google.cloud import bigquery
+
 
 def _sensor_setup():
     i2c = busio.I2C(board.SCL, board.SDA)
@@ -22,7 +23,7 @@ def _sensor_setup():
 
 def _measurement(sensor):
     return {
-    	"lux": int(sensor.lux),
+        "lux": int(sensor.lux),
         "broadband": int(sensor.broadband),
         "infrared": int(sensor.infrared),
         "sensor_id": sensor.sensor_id,
@@ -47,10 +48,10 @@ def _gbq_insert(measurement, client, table):
     if errors:
         raise RuntimeError(errors)
 
+
 if __name__ == "__main__":
     load_dotenv()
     client, table = _gbq_setup()
     sensor = _sensor_setup()
     measurement = _measurement(sensor)
-    print(measurement)
     _gbq_insert(measurement, client, table)
